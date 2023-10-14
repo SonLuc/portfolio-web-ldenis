@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -16,36 +16,28 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="text-zinc-800 bg-gradient-to-tl from-violet-200 to-pink-200 dark:bg-gradient-to-tl dark:from-slate-900 dark:to-slate-700 dark:text-slate-100 bg-fixed">
+		<div class="pattern">
+			<div class="xl:w-[60%] lg:w-[70%] sm:w-[90%] w-[90%] m-auto">
+				<slot />
+			</div>
+		</div>
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	
+	@font-face {
+		font-family: 'Space Grotesk';
+		src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf'), format('ttf');
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+
+	:root{
+		font-family: 'Space Grotesk';
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	.pattern{
+		background-image: url('/img/graph-paper.svg');
+		background-repeat: repeat;
 	}
+
 </style>

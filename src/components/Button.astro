@@ -1,0 +1,11 @@
+---
+interface Props {
+  style: string;
+}
+
+const { style } = Astro.props;
+---
+
+<button class=`${style} bg-pink-200 hover:bg-pink-100 border-pink-300 dark:bg-slate-800 dark:border-slate-600 dark:dark:hover:bg-slate-700`>
+  <slot />
+</button>

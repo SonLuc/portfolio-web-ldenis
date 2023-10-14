@@ -1,0 +1,38 @@
+---
+import ButtonDarkMode from "./ButtonDarkMode"
+import Button from "./Button.astro"
+import Logo from "./Logo.astro"
+import { BiMenu } from 'react-icons/bi'
+
+const Links = [
+  { name: 'Home', link: '#home' },
+  { name: 'About me', link: '#about' },
+  { name: 'Projects', link: '#projects' },
+  { name: 'Contact me', link: '#contact' }
+]
+---
+
+<header class="py-5">
+  <nav class='flex items-center justify-between'>
+    <Logo />
+    <div>
+      <ul class='hidden gap-4 items-center font-bold text-sm'>
+        {
+          Links.map(link => (
+            <li class='hover:text-pink-600 hover:dark:text-orange-300 transition-colors'>
+              <a href={link.link}>{link.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="flex items-center border rounded-md border-pink-300 dark:border-slate-600">
+      <Button style="text-xl rounded-s-md border-e px-1 py-1">
+        <ButtonDarkMode client:only />
+      </Button>
+      <Button style="text-xl rounded-e-md border-s px-1 py-1">
+        <BiMenu />
+      </Button>
+    </div>
+  </nav>
+</header>
